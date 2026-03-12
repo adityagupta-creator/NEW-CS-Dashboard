@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { FileText } from "lucide-react";
+import { PdfDialog } from "@/components/PdfDialog";
 interface DetailField { label: string; value: string; mono?: boolean; status?: "success" | "fail" | "pending" | "info"; isPdfLink?: boolean; }
 interface TransactionDetailPopupProps { open: boolean; onOpenChange: (open: boolean) => void; title: string; fields: DetailField[]; }
 export function TransactionDetailPopup({ open, onOpenChange, title, fields }: TransactionDetailPopupProps) {
@@ -16,7 +16,7 @@ export function TransactionDetailPopup({ open, onOpenChange, title, fields }: Tr
               <div key={i} className="flex items-center justify-between px-4 py-2.5">
                 <span className="text-xs text-muted-foreground">{f.label}</span>
                 {f.isPdfLink ? (
-                  <a href={f.value} className="text-xs gold-accent flex items-center gap-1 hover:underline font-medium"><FileText className="h-3 w-3" /> View PDF</a>
+                  <PdfDialog url={f.value} label="View PDF" title={f.label} className="text-xs font-medium" />
                 ) : f.status ? (
                   <span className={`text-[11px] font-semibold px-2 py-0.5 rounded status-badge-${f.status}`}>{f.value}</span>
                 ) : (

@@ -12,6 +12,8 @@ export const mockCustomer = {
   activityLog: "Last login: 2 hours ago",
 };
 
+const dummyPdfUrl = `${import.meta.env.BASE_URL}dummy-invoice.pdf`;
+
 export const mockOnboarding = {
   name: "Rajesh Kumar Sharma",
   mobile: "+91 98765 43210",
@@ -51,7 +53,7 @@ export const mockBuyTransactions = [
     transactionInitiatedStatus: "Completed",
     paymentStatus: "Captured",
     invoiceId: "INV-2024-001234",
-    invoicePdf: "#",
+    invoicePdf: dummyPdfUrl,
     bankAccount: "XXXX5678",
     ifsc: "HDFC0001234",
     bankName: "HDFC Bank",
@@ -79,7 +81,7 @@ export const mockBuyTransactions = [
     transactionInitiatedStatus: "Payment Failed",
     paymentStatus: "Failed",
     invoiceId: "N/A",
-    invoicePdf: "#",
+    invoicePdf: dummyPdfUrl,
     bankAccount: "XXXX5678",
     ifsc: "HDFC0001234",
     bankName: "HDFC Bank",
@@ -154,7 +156,7 @@ export const mockDeliveryTransactions = [
     address: "123, XXXX XXXX, Mumbai - 400001",
     trackingLink: "https://tracking.example.com/123",
     invoiceId: "INV-DEL-003456",
-    invoicePdf: "#",
+    invoicePdf: dummyPdfUrl,
     airwayNumber: "AWB-123456789",
     deliveryDropoff: "N/A",
   },
@@ -230,7 +232,7 @@ export const mockLeaseData = [
     potentialEarnings: "0.1750 gm",
     orderDate: "2023-08-28",
     status: "Active" as const,
-    leaseAgreement: "#",
+    leaseAgreement: dummyPdfUrl,
     pledgeOutAction: "N/A",
     payoutDates: "1st of every month",
     lastMonthYield: "0.0146 gm",
@@ -277,7 +279,7 @@ export const mockGoldBack = [
     retailerName: "Amazon India",
     orderId: "GB-001234",
     invoiceId: "INV-GB-001234",
-    invoicePdf: "#",
+    invoicePdf: dummyPdfUrl,
     totalPurchaseAmount: "₹15,000.00",
     netPurchaseAmount: "₹14,550.00",
     goldRate: "₹6,072/gm",
