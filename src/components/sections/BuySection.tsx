@@ -6,6 +6,12 @@ import { Eye } from "lucide-react";
 export function BuySection() {
   const [selected, setSelected] = useState<number | null>(null);
   const t = selected !== null ? mockBuyTransactions[selected] : null;
+  const invoiceFields = t && (t.transactionStatus === "Failed" || t.paymentStatus === "Failed")
+    ? []
+    : [
+        { label: "Invoice ID", value: t?.invoiceId ?? "", mono: true },
+        { label: "Invoice PDF", value: t?.invoicePdf ?? "", isPdfLink: true },
+      ];
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">Buy Transactions</h2>
@@ -47,7 +53,7 @@ export function BuySection() {
         { label: "Transaction Status", value: t.transactionStatus, status: t.transactionStatus === "Success" ? "success" : "fail" },
         { label: "Initiated Status", value: t.transactionInitiatedStatus },
         { label: "Payment Status", value: t.paymentStatus, status: t.paymentStatus === "Captured" ? "success" : "fail" },
-        { label: "Invoice ID", value: t.invoiceId, mono: true }, { label: "Invoice PDF", value: t.invoicePdf, isPdfLink: true },
+        ...invoiceFields,
         { label: "Bank Account", value: t.bankAccount, mono: true }, { label: "IFSC", value: t.ifsc, mono: true },
         { label: "Bank Name", value: t.bankName }, { label: "Dropoff Point", value: t.buyDropoff },
         { label: "Payment Failure Reason", value: t.paymentFailureReason }, { label: "Refund Initiated", value: t.refundInitiatedDate },
